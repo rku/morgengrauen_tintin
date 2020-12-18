@@ -13,15 +13,14 @@
 
 
 
-#VARIABLE {_client.name} {TinTin++};
-#VARIABLE {_client.version} {2.00.0};
+#VARIABLE {_client} {{name}{TinTin++}{version}{2.00.0}};
 
 
 #EVENT {IAC WILL GMCP}
 {
 	@DEBUG_event_start{IAC WILL GMCP};
 	#send {${_gmcp_IAC}${_gmcp_DO}${_gmcp_GMCP}};
-	#send {${_gmcp_IAC}${_gmcp_SB}${_gmcp_GMCP}Core.Hello { "client": "${_client.name}", "version": "${_client.version}" }${_gmcp_IAC}${_gmcp_SE}};
+	#send {${_gmcp_IAC}${_gmcp_SB}${_gmcp_GMCP}Core.Hello { "client": "${_client}[name]", "version": "${_client}[version]" }${_gmcp_IAC}${_gmcp_SE}};
 	#send {${_gmcp_IAC}${_gmcp_SB}${_gmcp_GMCP}Core.Supports.Set [ "Core 1", "MG.char 1", "MG.room 1", "MG.team 1", " comm.channel 1"]${_gmcp_IAC}${_gmcp_SE}};
 	@DEBUG_event_end{IAC WILL GMCP};
 };

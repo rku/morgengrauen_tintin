@@ -4,8 +4,7 @@
 
 #EVENT {PROGRAM START}
 {
-	#VARIABLE {_client.name} {%0};
-	#VARIABLE {_client.version} {%1};
+	#VARIABLE {_client} {{name}{%0}{version}{%1}};
 	@DEBUG_showvar{_client};
 };
 
