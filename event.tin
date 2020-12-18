@@ -1,6 +1,6 @@
 #NOP events ;
 
-
+#INFO events on
 
 #EVENT {PROGRAM START}
 {

@@ -1,6 +1,5 @@
 #NOP prompt ;
 
-
 #FUNCTION {_statusbar_text} 
 {
 	@DEBUG_func_start{_statusbar_text;{%0}};
@@ -33,7 +32,6 @@
 	#UNVARIABLE {_sb_text};
 };
 
-
 #FUNCTION {statusbar_print}
 {
 	@DEBUG_func_start{statusbar_print};
@@ -43,9 +41,6 @@
 	@DEBUG_func_end{statusbar_print};
 	#RETURN {#NOP};
 };
-
-
-
 
 #EVENT {VARIABLE UPDATE gmcp_char}
 {
@@ -58,7 +53,6 @@
 	};
 	@DEBUG_event_end{VARIABLE UPDATE gmcp_char};
 };
-
 
 #EVENT {SCREEN RESIZE}
 {

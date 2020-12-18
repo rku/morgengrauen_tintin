@@ -1,7 +1,6 @@
 #NOP GMCP ;
 #NOP read ingame help for details -> `hilfe gmcp` ;
 
-
 #FORMAT {_gmcp_IAC}  {%a} {255};
 #FORMAT {_gmcp_DONT} {%a} {254};
 #FORMAT {_gmcp_DO}   {%a} {253};
@@ -11,10 +10,7 @@
 #FORMAT {_gmcp_SE}   {%a} {240};
 #FORMAT {_gmcp_GMCP} {%a} {201};
 
-
-
 #VARIABLE {_client} {{name}{TinTin++}{version}{2.00.0}};
-
 
 #EVENT {IAC WILL GMCP}
 {
@@ -24,8 +20,6 @@
 	#send {${_gmcp_IAC}${_gmcp_SB}${_gmcp_GMCP}Core.Supports.Set [ "Core 1", "MG.char 1", "MG.room 1", "MG.team 1", " comm.channel 1"]${_gmcp_IAC}${_gmcp_SE}\};
 	@DEBUG_event_end{IAC WILL GMCP};
 };
-
-
 
 #EVENT {IAC SB GMCP MG.char.infoVars IAC SE}
 {
@@ -90,12 +84,3 @@
 	@DEBUG_var{gmcp_room[info]};
 	@DEBUG_gmcp_end{MG.room.info};
 };
-
-
-
-
-
-
-
-
-

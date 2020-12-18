@@ -3,7 +3,6 @@
 #VARIABLE {_map_error_li} {<199><FAA><fff> ! MAP ERROR ! <799>};
 #VARIABLE {_map_debug_li} {<199><FFA><aaa> :MAP DEBUG: <799>};
 
-
 #VARIABLE {_map_enabled} 0;
 
 #FUNCTION {map_room_setup}
@@ -82,7 +81,6 @@
 	#RETURN {#NOP};
 };
 
-
 #FUNCTION {map_init}
 {
 	@DEBUG_func_start{map_init;{%0}};
@@ -99,7 +97,6 @@
 	@DEBUG_func_end{map_init};
 	#RETURN {#NOP};
 };
-
 
 #EVENT {VARIABLE UPDATE gmcp_room}
 {
