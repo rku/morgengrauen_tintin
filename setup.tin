@@ -15,4 +15,4 @@
 #config WORDWRAP {OFF};
 #SPLIT {20} {1};
 
-#SESSION {MorgenGrauen} {mg.mud.de} {23};
+#SSL {MorgenGrauen} {mg.mud.de} {4712};
