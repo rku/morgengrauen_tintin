@@ -24,8 +24,8 @@
 	#IF { "${_mrs_map_roomname}" == "" }
 	{
 		#NOP new room;
-		#MAP set roomname {${_mrs_room}[id]};
-		#MAP set roomdesc {${_mrs_room}[short]};
+		#MAP set roomname {${_mrs_room}[short]};
+		#MAP set roomdesc {${_mrs_room}[id]};
 
 		#MAP get roomsymbol {_mrs_map_roomsymbol};
 		@DEBUG_var{_mrs_map_roomsymbol};
@@ -67,8 +67,8 @@
 		#UNVARIABLE {_mrs_map_roomexits};
 	} {
 		#NOP already known room;
-		#SHOWME {${_map_debug_li} known room: ${_mrs_map_roomname} };
-		#IF {"${_mrs_map_roomname}"!="${_mrs_room}[id]"}
+		@DEBUG_msg{${_map_debug_li} known room: ${_mrs_map_roomname}};
+		#IF {"${_mrs_map_roomname}"!="${_mrs_room}[short]"}
 		{
 			#SHOWME {${_map_error_li} room mismatch \n map: ${_mrs_map_roomname} \n mud: ${_mrs_room}[id] };
 		};
