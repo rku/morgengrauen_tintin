@@ -1,7 +1,5 @@
 #NOP events ;
 
-#INFO events on
-
 #EVENT {PROGRAM START}
 {
 	#VARIABLE {_client} {{name}{%0}{version}{%1}};
