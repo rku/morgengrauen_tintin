@@ -1,4 +1,4 @@
-#NOP TinTin++ config for MorgenGrauen -> http://mg.mud.de
+#NOP TinTin++ config for MorgenGrauen -> http://mg.mud.de ;
 
 #READ {debug.tin};
 
@@ -13,6 +13,6 @@
 #READ {event.tin};
 
 #config WORDWRAP {OFF};
-#SPLIT {20} {1};
+#SPLIT;
 
 #SSL {MorgenGrauen} {mg.mud.de} {4712};

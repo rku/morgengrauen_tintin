@@ -4,28 +4,40 @@
 #VARIABLE {_map_debug_li} {<199><FFA><aaa> :MAP DEBUG: <799>};
 
 #VARIABLE {_map_enabled} 0;
+#VARIABLE {_map_file} {../data/mg.map};
+
+#MACRO {\e[15~} {#MAP WRITE ${_map_file}};
 
 #FUNCTION {map_room_setup}
 {
-	#IF {! ${_map_enabled}}
-	{
-		@DEBUG_msg{function map_room_setup aborted: no map found!};
-		#RETURN {#NOP};
-	}
-
 	@DEBUG_func_start{map_room_setup;{%0}};
 
 	#VARIABLE {_mrs_room} {%0};
 	@DEBUG_var{_mrs_room};
 
-	#MAP get roomname {_mrs_map_roomname};
-	@DEBUG_var{_mrs_map_roomname};
+	#IF {! ${_map_enabled}}
+	{
+		@map_init{};
 
-	#IF { "${_mrs_map_roomname}" == "" }
+		#MAP list {roomid} {${_mrs_room[id]}} {variable} {_found_rooms};
+		@DEBUG_msg{looking for current room ID: ${_mrs_room[id]}};
+		#FOREACH {*{_found_rooms[]}} {_room_vnum}
+		{
+			@DEBUG_msg{found room ${_room_vnum}};
+			#MAP GOTO $_room_vnum;
+			#BREAK;
+		};
+		#UNVARIABLE {_found_rooms};
+	};
+
+	#MAP get roomid {_mrs_map_roomid};
+	@DEBUG_var{_mrs_map_roomid};
+
+	#IF { "${_mrs_map_roomid}" == "" }
 	{
 		#NOP new room;
-		#MAP set roomname {${_mrs_room}[short]};
-		#MAP set roomdesc {${_mrs_room}[id]};
+		#MAP set roomname {${_mrs_room[short]}};
+		#MAP set roomid {${_mrs_room[id]}};
 
 		#MAP get roomsymbol {_mrs_map_roomsymbol};
 		@DEBUG_var{_mrs_map_roomsymbol};
@@ -67,14 +79,25 @@
 		#UNVARIABLE {_mrs_map_roomexits};
 	} {
 		#NOP already known room;
-		@DEBUG_msg{${_map_debug_li} known room: ${_mrs_map_roomname}};
-		#IF {"${_mrs_map_roomname}"!="${_mrs_room}[short]"}
+		@DEBUG_msg{${_map_debug_li} known room: ${_mrs_map_roomid}};
+		#IF {"${_mrs_map_roomid}"!="${_mrs_room[id]}"}
 		{
-			#SHOWME {${_map_error_li} room mismatch \n map: ${_mrs_map_roomname} \n mud: ${_mrs_room}[id] };
+			#SHOWME {${_map_error_li} room mismatch \n map: ${_mrs_map_roomid} \n mud: ${_mrs_room[id]}};
+		};
+		#IF {"${_last_room_vnum}"!="${_mrs_room[vnum]}"}
+		{
+			#IF {"${_last_room_id}"=="${_mrs_room[id]}"}
+			{
+				#SHOWME {${_map_error_li} new room created with same id as last one - undo map action};
+				#MAP UNDO;
+			};
 		};
 	};
 
-	#UNVARIABLE {_mrs_map_roomname};
+	#VARIABLE {_last_room_vnum} ${_mrs_room[vnum]}
+	#VARIABLE {_last_room_id} ${_mrs_room[id]};
+
+	#UNVARIABLE {_mrs_map_roomid};
 	#UNVARIABLE {_mrs_room};
 
 	@DEBUG_func_end{map_room_setup};
@@ -85,14 +108,14 @@
 {
 	@DEBUG_func_start{map_init;{%0}};
 
+	#SPLIT 16 1;
 	#MAP create 20000;
-	#MAP goto 1;
+	#MAP read $_map_file;
+	#MAP GOTO 1;
 	#MAP flag asciigraphics on;
 	#MAP flag vtmap;
 
 	#VARIABLE {_map_enabled} 1;
-
-	@map_room_setup{$gmcp_room[info]};
 
 	@DEBUG_func_end{map_init};
 	#RETURN {#NOP};
