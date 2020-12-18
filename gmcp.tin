@@ -27,7 +27,7 @@
 
 
 
-#event {IAC SB GMCP MG.char.infoVars IAC SE}
+#EVENT {IAC SB GMCP MG.char.infoVars IAC SE}
 {
 	@DEBUG_event_start{MG.char.infoVars};
 	#VARIABLE gmcp_char[infoVars] {%0};
@@ -35,7 +35,7 @@
 	@DEBUG_gmcp_end{MG.char.infoVars};
 };
 
-#event {IAC SB GMCP MG.char.info IAC SE}
+#EVENT {IAC SB GMCP MG.char.info IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.infoVars};
 	#VARIABLE gmcp_char[info] {%0};
@@ -43,7 +43,7 @@
 	@DEBUG_gmcp_end{MG.char.infoVars};
 };
 
-#event {IAC SB GMCP MG.char.attributes IAC SE}
+#EVENT {IAC SB GMCP MG.char.attributes IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.attributes};
 	#VARIABLE gmcp_char[attributes] {%0};
@@ -51,7 +51,7 @@
 	@DEBUG_gmcp_end{MG.char.attributes};
 };
 
-#event {IAC SB GMCP MG.char.maxvitals IAC SE}
+#EVENT {IAC SB GMCP MG.char.maxvitals IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.maxvitals};
 	#VARIABLE gmcp_char[maxvitals] {%0};
@@ -59,7 +59,7 @@
 	@DEBUG_gmcp_end{MG.char.maxvitals};
 };
 
-#event {IAC SB GMCP MG.char.vitals IAC SE}
+#EVENT {IAC SB GMCP MG.char.vitals IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.vitals};
 	#VARIABLE gmcp_char[vitals] {%0};
@@ -67,7 +67,7 @@
 	@DEBUG_gmcp_end{MG.char.vitals};
 };
 
-#event {IAC SB GMCP MG.char.base IAC SE}
+#EVENT {IAC SB GMCP MG.char.base IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.base};
 	#VARIABLE gmcp_char[base] {%0};
@@ -75,7 +75,7 @@
 	@DEBUG_gmcp_end{MG.char.base};
 };
 
-#event {IAC SB GMCP MG.char.wimpy IAC SE}
+#EVENT {IAC SB GMCP MG.char.wimpy IAC SE}
 {
 	@DEBUG_gmcp_start{MG.char.wimpy};
 	#VARIABLE gmcp_char[wimpy] {%0};
@@ -83,7 +83,7 @@
 	@DEBUG_gmcp_end{MG.char.wimpy};
 };
 
-#event {IAC SB GMCP MG.room.info IAC SE}
+#EVENT {IAC SB GMCP MG.room.info IAC SE}
 {
 	@DEBUG_gmcp_start{MG.room.info};
 	#VARIABLE gmcp_room[info] {%0};
