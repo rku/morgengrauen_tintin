@@ -1,4 +1,4 @@
 #!/bin/sh
 BASEDIR=$(dirname $0)
-cd ${BASEDIR}/scripts
+cd ${BASEDIR}/lib
 tt++ -G -r main.tin
