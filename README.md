@@ -1,13 +1,11 @@
-# work in progress
+Overview
+===================
+tintin++ scripts for the german MorgenGrauen MUD
 
-scripts and foo for MorgenGrauen MUD
+Usage
+=====
 
-## tested with tintin++ version 
-
-* 2.01.0 
-* 2.01.1
-
-
-## TODO 
-
-get rid of it: at some places there is output of unneeded line breats that is sent to the server ... 
+ 1. install recent version of
+    tintin++ if not already done
+ 1. clone repository
+ 2. run start.sh
