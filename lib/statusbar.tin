@@ -7,17 +7,17 @@
 	#VARIABLE {_sb_char} {%0};
 	@DEBUG_var{_sb_char};
 
-	#FORMAT {_sb_text} { [%s] <LVL: %d> [LP: %d/%d | SP: %d/%d | Gift: %d/%d]  }
-		{${_sb_char}[base][name]} {${_sb_char}[info][level]}
-		{${_sb_char}[vitals][hp]} {${_sb_char}[maxvitals][max_hp]}
-		{${_sb_char}[vitals][sp]} {${_sb_char}[maxvitals][max_sp]}
-		{${_sb_char}[vitals][poison]} {${_sb_char}[maxvitals][max_poison]}
+	#FORMAT {_sb_text} { [%s] <LVL: %d> [LP: %d/%d | SP: %d/%d | Gift: %d/%d] }
+		{$_sb_char[base][name]} {$_sb_char[info][level]}
+		{$_sb_char[vitals][hp]} {$_sb_char[maxvitals][max_hp]}
+		{$_sb_char[vitals][sp]} {$_sb_char[maxvitals][max_sp]}
+		{$_sb_char[vitals][poison]} {$_sb_char[maxvitals][max_poison]}
 		;
 	@DEBUG_var{_sb_text};
 
 	#UNVARIABLE {_sb_char};
 
-	#FORMAT {_sb_screenwidth} {%C} {}; 
+	#SCREEN get cols {_sb_screenwidth}; 
 	@DEBUG_var{_sb_screenwidth};
 
 	#VARIABLE {_sb_screenwidth_spf} {%-${_sb_screenwidth}s};
@@ -30,16 +30,17 @@
 	#UNVARIABLE {_sb_screenwidth};
 	#UNVARIABLE {_sb_screenwidth_spf};
 	#UNVARIABLE {_sb_text};
+
+	#RETURN {$result};
 };
 
 #FUNCTION {statusbar_print}
 {
 	@DEBUG_func_start{statusbar_print};
 
-	#SHOWME {<799>@_statusbar_text{$gmcp_char}} {1};
+	#SHOWME {<799>@_statusbar_text{$gmcp_char}} {-2};
 	
 	@DEBUG_func_end{statusbar_print};
-	#RETURN {#NOP};
 };
 
 #EVENT {VARIABLE UPDATE gmcp_char}
