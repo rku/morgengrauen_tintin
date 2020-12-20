@@ -38,7 +38,7 @@
 {
 	@DEBUG_func_start{statusbar_print};
 
-	#SHOWME {<799>@_statusbar_text{$gmcp_char}} {-2};
+	#SHOWME {<799>@_statusbar_text{$gmcp_char}<099>} {-2};
 	
 	@DEBUG_func_end{statusbar_print};
 
