@@ -41,6 +41,8 @@
 	#SHOWME {<799>@_statusbar_text{$gmcp_char}} {-2};
 	
 	@DEBUG_func_end{statusbar_print};
+
+	#RETURN {#NOP};
 };
 
 #EVENT {VARIABLE UPDATE gmcp_char}
