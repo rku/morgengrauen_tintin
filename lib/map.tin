@@ -113,7 +113,7 @@
 	#MAP read $_map_file;
 	#MAP GOTO 1;
 	#MAP flag asciigraphics on;
-	#MAP flag vtmap;
+	#MAP flag vtmap on;
 
 	#VARIABLE {_map_enabled} 1;
 
