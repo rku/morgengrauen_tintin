@@ -1,9 +1,11 @@
 #NOP map
 
+#VARIABLE {_map_enable} 0;
+
 #VARIABLE {_map_error_li} {<199><FAA><fff> ! MAP ERROR ! <799>};
 #VARIABLE {_map_debug_li} {<199><FFA><aaa> :MAP DEBUG: <799>};
 
-#VARIABLE {_map_enabled} 0;
+#VARIABLE {_map_initialized} 0;
 #VARIABLE {_map_file} {../data/mg.map};
 
 #MACRO {\e[15~} {#MAP write $_map_file};
@@ -12,10 +14,15 @@
 {
 	@DEBUG_func_start{map_room_setup;{%0}};
 
+	#IF {! $_map_enable}
+	{
+		#RETURN {#NOP};
+	};
+
 	#VARIABLE {_mrs_room} {%0};
 	@DEBUG_var{_mrs_room};
 
-	#IF {! ${_map_enabled}}
+	#IF {! ${_map_initialized}}
 	{
 		@map_init{};
 
@@ -115,7 +122,7 @@
 	#MAP flag asciigraphics on;
 	#MAP flag vtmap on;
 
-	#VARIABLE {_map_enabled} 1;
+	#VARIABLE {_map_initialized} 1;
 
 	@DEBUG_func_end{map_init};
 	#RETURN {#NOP};
