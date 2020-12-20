@@ -6,7 +6,7 @@
 #VARIABLE {_map_enabled} 0;
 #VARIABLE {_map_file} {../data/mg.map};
 
-#MACRO {\e[15~} {#MAP WRITE ${_map_file}};
+#MACRO {\e[15~} {#MAP write $_map_file};
 
 #FUNCTION {map_room_setup}
 {
@@ -94,7 +94,7 @@
 		};
 	};
 
-	#VARIABLE {_last_room_vnum} ${_mrs_room[vnum]}
+	#VARIABLE {_last_room_vnum} ${_mrs_room[vnum]};
 	#VARIABLE {_last_room_id} ${_mrs_room[id]};
 
 	#UNVARIABLE {_mrs_map_roomid};
