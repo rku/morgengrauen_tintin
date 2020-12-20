@@ -6,3 +6,38 @@
 	@DEBUG_showvar{_client};
 };
 
+#EVENT {VARIABLE UPDATE gmcp_room}
+{
+	@DEBUG_event_start{VARIABLE UPDATE gmcp_room};
+
+	#VARIABLE {_room} {%1};
+	@DEBUG_var{_room};
+
+	#DELAY {0}
+	{
+		@map_room_setup{$_room};
+		@statusbar_print{};
+	};
+
+	@DEBUG_event_end{VARIABLE UPDATE gmcp_room};
+};
+
+#EVENT {VARIABLE UPDATE gmcp_char}
+{
+	@DEBUG_event_start{VARIABLE UPDATE gmcp_char};
+	#DELAY {0}
+	{
+		#NOP delay 0 to have access to the newly set value of the var ;
+		#NOP can not use %1 - this will be a partial value of char ... ;
+		@statusbar_print{};
+	};
+	@DEBUG_event_end{VARIABLE UPDATE gmcp_char};
+};
+
+#EVENT {SCREEN RESIZE}
+{
+	@DEBUG_event_start{SCREEN RESIZE};
+	@statusbar_print{};
+	@DEBUG_event_end{SCREEN RESIZE};
+};
+

@@ -1,6 +1,7 @@
 #NOP map
 
 #VARIABLE {_map_enable} 0;
+#VARIABLE {_show_room_name} 1;
 
 #VARIABLE {_map_error_li} {<199><FAA><fff> !MAP ERROR! <799>};
 #VARIABLE {_map_debug_li} {<199><FFA><aaa> :MAP DEBUG: <799>};
@@ -129,9 +130,3 @@
 	#RETURN {#NOP};
 };
 
-#EVENT {VARIABLE UPDATE gmcp_room}
-{
-	@DEBUG_event_start{VARIABLE UPDATE gmcp_room};
-	@map_room_setup{%1[info]};
-	@DEBUG_event_end{VARIABLE UPDATE gmcp_room};
-};

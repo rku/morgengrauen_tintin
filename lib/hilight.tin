@@ -1,7 +1,7 @@
 #NOP hilights
 
 #HIGHLIGHT  {^Es gibt %w sichtbare{n Ausgang| Ausgaenge}:}  {light blue}  {5}
-#HIGHLIGHT  {{[Oo]sten|[Ww]esten|[Ss]ueden|[Nn]orden|[Nn]ordosten|[Nn]ordwesten|[Ss]uedosten|[Ss]uedwesten|[Oo]ben|[Uu]nten}} {underscore} {6}
+#HIGHLIGHT  {{osten|westen|sueden|norden|nordosten|nordwesten|suedosten|suedwesten|oben|unten}} {light white} {6}
 
 #HIGHLIGHT  {^%* teilt Dir mit:}  {light green}  {5}
 #HIGHLIGHT  {^Du teilst %w mit:}  {light green}  {5}

@@ -4,18 +4,19 @@
 {
 	@DEBUG_func_start{_statusbar_text;{%0}};
 
-	#VARIABLE {_sb_char} {%0};
-	@DEBUG_var{_sb_char};
+	#VARIABLE {_sb_data} {%0};
+	@DEBUG_var{_sb_data};
 
-	#FORMAT {_sb_text} { [%s] <LVL: %d> [LP: %d/%d | SP: %d/%d | Gift: %d/%d] }
-		{$_sb_char[base][name]} {$_sb_char[info][level]}
-		{$_sb_char[vitals][hp]} {$_sb_char[maxvitals][max_hp]}
-		{$_sb_char[vitals][sp]} {$_sb_char[maxvitals][max_sp]}
-		{$_sb_char[vitals][poison]} {$_sb_char[maxvitals][max_poison]}
+	#FORMAT {_sb_text} { %s (%d) [LP:%d/%d] [SP:%d/%d] [Gift:%d/%d] %s}
+		{$_sb_data[char][base][name]} {$_sb_data[char][info][level]}
+		{$_sb_data[char][vitals][hp]} {$_sb_data[char][maxvitals][max_hp]}
+		{$_sb_data[char][vitals][sp]} {$_sb_data[char][maxvitals][max_sp]}
+		{$_sb_data[char][vitals][poison]} {$_sb_data[char][maxvitals][max_poison]}
+		{$_sb_data[room][info][short]}
 		;
 	@DEBUG_var{_sb_text};
 
-	#UNVARIABLE {_sb_char};
+	#UNVARIABLE {_sb_data};
 
 	#SCREEN get cols {_sb_screenwidth}; 
 	@DEBUG_var{_sb_screenwidth};
@@ -38,28 +39,11 @@
 {
 	@DEBUG_func_start{statusbar_print};
 
-	#SHOWME {<799>@_statusbar_text{$gmcp_char}<099>} {-2};
-	
+	#SHOWME {<074>@_statusbar_text{{char}{$gmcp_char}{room}{$gmcp_room}}<099>} {-2};
+
 	@DEBUG_func_end{statusbar_print};
 
 	#RETURN {#NOP};
 };
 
-#EVENT {VARIABLE UPDATE gmcp_char}
-{
-	@DEBUG_event_start{VARIABLE UPDATE gmcp_char};
-	#DELAY {0}
-	{
-		#NOP delay 0 to have access to the newly set value of the var ;
-		#NOP can not use %1 - this will be a partial value of char ... ;
-		@statusbar_print{};
-	};
-	@DEBUG_event_end{VARIABLE UPDATE gmcp_char};
-};
 
-#EVENT {SCREEN RESIZE}
-{
-	@DEBUG_event_start{SCREEN RESIZE};
-	@statusbar_print{};
-	@DEBUG_event_end{SCREEN RESIZE};
-};
