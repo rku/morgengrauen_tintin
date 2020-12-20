@@ -111,7 +111,7 @@
 	#SPLIT 16 1;
 	#MAP create 20000;
 	#MAP read $_map_file;
-	#MAP GOTO 1;
+	#MAP goto 1;
 	#MAP flag asciigraphics on;
 	#MAP flag vtmap on;
 
