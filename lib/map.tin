@@ -2,8 +2,9 @@
 
 #VARIABLE {_map_enable} 0;
 
-#VARIABLE {_map_error_li} {<199><FAA><fff> ! MAP ERROR ! <799>};
+#VARIABLE {_map_error_li} {<199><FAA><fff> !MAP ERROR! <799>};
 #VARIABLE {_map_debug_li} {<199><FFA><aaa> :MAP DEBUG: <799>};
+#VARIABLE {_map_li_end}   {<099>};
 
 #VARIABLE {_map_initialized} 0;
 #VARIABLE {_map_file} {../data/mg.map};
@@ -65,7 +66,7 @@
 			#IF {${_mrs_map_roomexits[${_mrs_room_exit}]}}
 			{
 				#NOP already known room;
-				#SHOWME {${_map_debug_li} known exit: ${_mrs_room_exit} };
+				#SHOWME {${_map_debug_li} known exit: ${_mrs_room_exit}${_map_li_end}};
 			}
 			{
 				#NOP new unknown room;
@@ -86,16 +87,16 @@
 		#UNVARIABLE {_mrs_map_roomexits};
 	} {
 		#NOP already known room;
-		@DEBUG_msg{${_map_debug_li} known room: ${_mrs_map_roomid}};
+		@DEBUG_msg{${_map_debug_li} known room: ${_mrs_map_roomid}${_map_li_end}};
 		#IF {"${_mrs_map_roomid}"!="${_mrs_room[id]}"}
 		{
-			#SHOWME {${_map_error_li} room mismatch \n map: ${_mrs_map_roomid} \n mud: ${_mrs_room[id]}};
+			#SHOWME {${_map_error_li} room mismatch \n map: ${_mrs_map_roomid} \n mud: ${_mrs_room[id]}${_map_li_end}};
 		};
 		#IF {"${_last_room_vnum}"!="${_mrs_room[vnum]}"}
 		{
 			#IF {"${_last_room_id}"=="${_mrs_room[id]}"}
 			{
-				#SHOWME {${_map_error_li} new room created with same id as last one - undo map action};
+				#SHOWME {${_map_error_li} new room created with same id as last one - undo map action${_map_li_end}};
 				#MAP UNDO;
 			};
 		};

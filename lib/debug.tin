@@ -17,7 +17,7 @@
 {
 	#IF {$DEBUG >= ${_dbg_lvl_msg}}
 	{
-		#SHOWME {<199><FFC><aaa> :DEBUG: <799> %0 };
+		#SHOWME {<199><FFC><aaa> :DEBUG: <799> %0<099>};
 	};
 
 	#RETURN {#NOP};
